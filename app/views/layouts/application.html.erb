@@ -8,9 +8,26 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+
+    <nav>
+      <div class="nav-wrapper">
+        <%= link_to "Inventory Manager", root_path, class: 'brand-logo' %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to "Inventory Items", item_index_path %></li>
+          <li><%= link_to "Shipments", root_path %></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
+
 </html>
