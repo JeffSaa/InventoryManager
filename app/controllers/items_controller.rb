@@ -4,6 +4,10 @@ class ItemsController < ApplicationController
   	@items = Item.all.where(deleted: false).order('created_at DESC')
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def new
     @item = Item.new
   end
@@ -14,6 +18,15 @@ class ItemsController < ApplicationController
       redirect_to new_item_url, notice: ["Item Created"]
     else
       redirect_to new_item_url, notice: item.errors.full_messages
+    end
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      redirect_to item_url, notice: ["Item Updated"]
+    else
+      redirect_to item_url, notice: item.errors.full_messages
     end
   end
 
