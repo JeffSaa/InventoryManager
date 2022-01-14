@@ -1,0 +1,4 @@
+<% unless flash.empty? %>
+	<h4>Messages:</h4>
+	<%= safe_join(flash[:notice], "<br>".html_safe) %>
+<% end %>
